@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ID">
+    <head>
+        <title>Burung Perkutut Jawa</title>
+        <meta name="description" content="Budidaya Perkutut Jawa">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            :root{
+                --kertas: #EDE2C8;       
+                --kertas-gelap: #E2D4AE;
+                --tinta: #2B2013;        
+                --jati: #55371F;         
+                --jati-tua: #3C2715;
+                --kuningan: #A1792C;     
+                --kuningan-terang: #C79A41;
+                --sawah: #44592E;        
+                --soga: #7B3826;         
+                --garis: #C7B084;
+            }
+
+            *{ box-sizing: border-box; }
+
+            html{ scroll-behavior: smooth; }
+
+            body{
+                margin: 0;
+                background: var(--kertas);
+                background-image:
+                    repeating-linear-gradient(90deg, rgba(85,55,31,0.025) 0 2px, transparent 2px 64px),
+                    repeating-linear-gradient(0deg, rgba(85,55,31,0.025) 0 2px, transparent 2px 64px);
+                color: var(--tinta);
+                font-family: Georgia, "Noto Serif", "PT Serif", serif;
+                font-size: 17px;
+                line-height: 1.65;
+            }
+
+            #header{
+                background: var(--jati);
+                background-image: linear-gradient(170deg, var(--jati) 0%, var(--jati-tua) 100%);
+                color: var(--kertas);
+                padding: 3rem 1.5rem 3.5rem;
+                text-align: center;
+                border-bottom: 6px double var(--kuningan);
+            }
+
+            #header h1{
+                margin: 0 auto 2rem;
+                max-width: 20ch;
+                font-size: clamp(1.6rem, 4vw, 2.5rem);
+                font-weight: 700;
+                letter-spacing: 0.01em;
+                line-height: 1.25;
+            }
+
+            #header blockquote{
+                max-width: 480px;
+                margin: 0 auto;
+                padding: 1.75rem 2rem;
+                border: 1px solid rgba(199,154,65,0.5);
+                border-radius: 2px;
+                font-style: italic;
+                font-size: 1rem;
+                color: var(--kertas-gelap);
+                position: relative;
+            }
+
+            #header blockquote::before,
+            #header blockquote::after{
+                content: "";
+                position: absolute;
+                width: 14px;
+                height: 14px;
+                border: 2px solid var(--kuningan-terang);
+            }
+            #header blockquote::before{ top: -2px; left: -2px; border-right: none; border-bottom: none; }
+            #header blockquote::after{ bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+            #header #soekarno{
+                display: block;
+                margin-top: 1rem;
+                font-style: normal;
+                font-size: 0.85rem;
+                color: var(--kuningan-terang);
+            }
+
+            body > div:nth-of-type(2) ul{
+                display: flex;
+                justify-content: center;
+                gap: 2.5rem;
+                list-style: none;
+                margin: 0;
+                padding: 1rem 1rem;
+                background: var(--kertas-gelap);
+                border-bottom: 1px solid var(--garis);
+            }
+
+            body > div:nth-of-type(2) a{
+                color: var(--jati);
+                text-decoration: none;
+                font-size: 0.95rem;
+                font-weight: 700;
+                padding-bottom: 0.2rem;
+                border-bottom: 2px solid transparent;
+                transition: border-color 0.2s ease, color 0.2s ease;
+            }
+
+            body > div:nth-of-type(2) a:hover,
+            body > div:nth-of-type(2) a:focus-visible{
+                color: var(--soga);
+                border-bottom-color: var(--kuningan);
+            }
+
+            .gambar, .koleksi{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.25rem;
+                padding: 2rem 1.5rem;
+                max-width: 760px;
+                margin: 0 auto;
+            }
+
+            .gambar img, .koleksi img{
+                width: 180px;
+                height: 180px;
+                object-fit: cover;
+                background: var(--kertas-gelap);
+                padding: 8px;
+                border: 1px solid var(--garis);
+                box-shadow: 0 1px 0 var(--garis), 0 3px 6px rgba(43,32,19,0.15);
+            }
+
+            .koleksi img{ width: 150px; height: 150px; }
+
+            .isi{
+                max-width: 640px;
+                margin: 0 auto;
+                padding: 1rem 1.5rem 2.5rem;
+            }
+
+            .isi p{ margin: 0 0 1.25rem; }
+
+            .isi .jawa{
+                color: var(--soga);
+                font-weight: 700;
+            }
+
+            .isi i{ color: var(--jati); }
+
+            #profil, #beternak{
+                max-width: 640px;
+                margin: 0 auto 2.5rem;
+                padding: 0 1.5rem;
+            }
+
+            #profil h3, #beternak h3{
+                font-size: 1.4rem;
+                margin: 0 0 1rem;
+                padding-bottom: 0.6rem;
+                border-bottom: 1px solid var(--garis);
+                color: var(--jati);
+            }
+
+            #profil ul{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            #profil li{
+                position: relative;
+                padding: 0.75rem 0 0.75rem 1.5rem;
+                border-bottom: 1px dotted var(--garis);
+            }
+
+            #profil li::before{
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 1.15rem;
+                width: 7px;
+                height: 7px;
+                background: var(--sawah);
+                border-radius: 50%;
+            }
+
+            #profil li:last-child{ border-bottom: none; }
+
+            #beternak ol{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                counter-reset: tahap;
+            }
+
+            #beternak ol > li{
+                counter-increment: tahap;
+                position: relative;
+                padding: 0.5rem 0 1.5rem 3.25rem;
+                border-left: 2px solid var(--garis);
+                margin-left: 0.9rem;
+            }
+
+            #beternak ol > li:last-child{ padding-bottom: 0; border-left-color: transparent; }
+
+            #beternak ol > li::before{
+                content: counter(tahap);
+                position: absolute;
+                left: -1.1rem;
+                top: 0;
+                width: 2.1rem;
+                height: 2.1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--jati);
+                color: var(--kertas);
+                font-family: Georgia, serif;
+                font-weight: 700;
+                font-size: 1rem;
+                border-radius: 50%;
+                border: 2px solid var(--kuningan);
+            }
+
+            #beternak h4{
+                margin: 0 0 0.4rem;
+                font-size: 1.1rem;
+                color: var(--soga);
+            }
+
+            #beternak p{ margin: 0; }
+
+            .promo{
+                background: var(--soga);
+                background-image: linear-gradient(170deg, var(--soga) 0%, #5E2A1C 100%);
+                color: var(--kertas);
+                text-align: center;
+                padding: 2.75rem 1.5rem;
+                margin-top: 1rem;
+            }
+
+            .promo h2{
+                max-width: 26ch;
+                margin: 0 auto 1.5rem;
+                font-size: 1.3rem;
+                line-height: 1.5;
+                font-weight: 400;
+            }
+
+            .promo h3{
+                display: inline-block;
+                margin: 0 auto 1.75rem;
+                padding: 1.25rem 2rem;
+                background: rgba(0,0,0,0.18);
+                border: 1px solid var(--kuningan-terang);
+                font-size: 1.05rem;
+                font-weight: 400;
+                line-height: 1.9;
+            }
+
+            .promo del{
+                color: rgba(237,226,200,0.55);
+                font-size: 0.95rem;
+            }
+
+            .promo strong{
+                color: var(--kuningan-terang);
+                font-size: 1.5rem;
+            }
+
+            .promo #Wa{
+                display: inline-block;
+                margin-top: 0.4rem;
+                font-weight: 700;
+                letter-spacing: 0.02em;
+            }
+
+            .promo h4{
+                margin: 0 0 0.9rem;
+                font-weight: 400;
+                font-size: 0.95rem;
+                color: var(--kertas-gelap);
+            }
+
+            .promo ol{
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                margin: 0;
+                padding: 0;
+            }
+
+            .promo ol a{
+                color: var(--kertas);
+                text-decoration: none;
+                padding: 0.5rem 1.1rem;
+                border: 1px solid rgba(237,226,200,0.5);
+                font-size: 0.9rem;
+                transition: background 0.2s ease, color 0.2s ease;
+            }
+
+            .promo ol a:hover,
+            .promo ol a:focus-visible{
+                background: var(--kuningan-terang);
+                border-color: var(--kuningan-terang);
+                color: var(--jati-tua);
+            }
+
+            a:focus-visible, :focus-visible{
+                outline: 2px solid var(--kuningan-terang);
+                outline-offset: 2px;
+            }
+
+            @media (prefers-reduced-motion: reduce){
+                html{ scroll-behavior: auto; }
+                *{ transition: none !important; }
+            }
+
+            @media (max-width: 480px){
+                body > div:nth-of-type(2) ul{ gap: 1.5rem; }
+                .gambar img, .koleksi img{ width: 130px; height: 130px; }
+                .promo ol{ flex-wrap: wrap; }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <h1>Perkutut Jawa Suara Emas Penghibur Hati</h1>
+            <blockquote>
+                Jikalau aku mendengarkan burung Perkutut
+menyanyi di pohon ditiup angin yang sepoi-sepoi
+bukan lagi aku mendengarkan burung Perkutut
+Aku mendengarkan Indonesia <br/>
+                <span id="soekarno">Soekarno - President RI I</span>
+            </blockquote>
+        </div>
+        <div>
+            <ul>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#berternak">Budidaya</a></li>
+            <li><a href="#harga">Harga</a></li>
+            </ul>
+
+        </div>
+        <div class="gambar">
+            <img src="images/burung2.png" alt="Burung Perkutut Jawa"/>
+            <img src="images/burung1.png" alt="Burung Suara Emas"/>       
+        </div>
+        <div class="isi">
+            <p>
+                Burung <span class="jawa">Perkutut Jawa</span> dengan nama latin <i>Geopelia striata</i> bukan hanya burung yang mampu bersuara, 
+                akan tetapi burung ini mempunyai beragam keunikan yang tidak dimiliki oleh burung lainnya. Bagi sebagian pemelihara burung, dengan hanya melihat perkutut, 
+                sudah bisa memastikan bagaimana suara yang akan dihasilkan.
+                Salah satu kebiasaan dari burung ini adalah terbang dan bertengger di kebun atau ladang. Selain itu, mereka juga sering mencari makan di jalan yang jarang dilintasi oleh manusia </p>
+            <p>
+                Perkutut Jawa  hidup berpasangan atau kelompok kecil. Perkutut jawa makan di permukaan tanah. Kadang mereka berkumpul untuk minum di sumber air.
+                 Sarangnya berbentuk datar tipis dan terbuat dari ranting-ranting. 
+                 Telur berwarna putih, jumlah 2 butir. Perkutut jawa berbiak pada bulan Januari-September. 
+             </p>
+           
+        </div>
+        <div id="profil">
+            
+            <h3>Profil Perkutut Jawa</h3>
+            <a name="profil"/>
+            <ul>
+                <li>Burung perkutut jawa (Geopelia striata) atau dikenal juga sebagai perkutut lokal mempunyai tubuh ramping panjang berukuran sedang, sekitar 20-25 cm, ukuran ekor pendek dengan kepala membulat</li>
+                <li>Burung pemakan biji-bijian ini biasanya dipelihara oleh orang Jawa yang mempunyai sebagai burung kicauan karena suaranya yang khas dan dianggap membawa keberuntungan</li>
+                <li>Burung dengan nama latin Geopelia striata bukan hanya burung yang mampu bersuara, akan tetapi burung ini mempunyai beragam keunikan yang tidak dimiliki oleh burung lainnya.</li>
+                <li>Burung perkutut di alam memakan rerumputan, benih gulma dan serangga. Sehingga, dimungkinkan di alam mempunyai manfaat sebagai pengontrol alami gulma dan serangga.</li>
+            </ul>
+        </div>
+        <div id="beternak">
+            <h3>Cara Berternak Perkutut Jawa</h3>
+            <a name="berternak"/>
+            <ol>
+                <li><h4>Pemilihan Bibit</h4>
+                    <p>
+                        Bibit atau indukan burung perkutut yang akan dibudidayakan haruslah telah berumur ideal yaitu minimal berumur 4 bulan dan sebaiknya betina lebih tua dari jantan. Selain itu pilihlah bibit yang baik agar hasilnya juga baik, berikut ciri-ciri indukan perkutut yang baik
+                    </p>
+                </li>
+                <li><h4>Persiapan Kandang Budidaya</h4>
+                <p>
+                    Kandang yang digunakan untuk budidaya biasanya adalah kandang dengan ukuran tinggi bervariasi antara 45-180 cm, lebar 60 cm, panjang antara 100-180 cm, lantainya terbuat dari pasir atau tanah dan ataonya berupa asbes atau genting.
+                </p></li>
+                <li><h4>Proses Perjodohan</h4>
+                <p>
+                    Untuk menjodohkan burung perkutut ini, pertama masukkan perkutut yang akan dijodohkan ke dalam kandang ternak pada saat sore hari. Nemun perlu diperhatikan sebelum dimasukkan ke dalam kandang ternak kedua perkutut yang akan dijodohkan terlebih dahulu diberikan kacang hijau lunak, minyak ikan, vitamin E dan badannya dibasahi sedikit
+                </p></li>
+                <li><h4>Tahap Pemeliharaan Anakan</h4>
+                <p>
+                    Piyik atau anakan burung yang baru menetas, sebaiknya dipisahkan terlebih dahulu dari induknya jika sudah berumur 1-1,5 bulan. Pada usia tersebut, piyik biasanya sudah bisa makan sendiri. Tempatkan piyik dalam sangkar yang memiliki ukuran sekitar 50 cm x 70 cm x 50 cm dengan dalam satu sangkar diletakkan 8 sampai 10 ekor piyik burung perkutut
+                </p>
+                </li>
+            </ol>
+        </div>
+        <div class="koleksi">
+            <img src="images/burung4.png"/>
+            <img src="images/burung3.png"/>
+            <img src="images/burung5.png"/>
+            <img src="images/burung6.png"/>          
+        </div>
+        <div class="promo">
+            <h2>Tertarik untuk budidaya / memelihara Perkutut Jawa?, 
+                <br/>Penawaran Khusus Bagi Anda </h2>
+            <h3>
+                Harga 1 Ekor Perkutut Remaja <del>Rp. 75.000</del> <br/>
+                Sekarang cukup <strong>Rp. 50.000</strong> saja!
+                <br/>
+                <a name="harga"/>
+                Berminat hubung kami di <span id="Wa">WA - 012455588222</span>
+            </h3>
+            <h4>Kami Hadir juga di aplikasi eCommerce:</h4>
+            <ol>
+                <li><a href="tokopedia.com">tokopedia</a></li>
+                <li><a href="bukakapak.com">Bukalapak</a></li>
+                <li><a href="shopee.com">shopee</a></li>
+            </ol>
+        </div>
+
+    </body>
+</html>
